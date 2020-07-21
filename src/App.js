@@ -1,5 +1,5 @@
 import React from 'react'
-import { FetchedPosts, PostForm, Posts } from './components'
+import { PostForm, FetchedPosts, Posts } from './components'
 
 function App() {
 	return (
@@ -12,11 +12,11 @@ function App() {
 			<div className='row'>
 				<div className='col'>
 					<h2>Synchronize posts</h2>
-					<Posts posts={[]} />
+					<Posts />
 				</div>
 				<div className='col'>
 					<h2>Asynchronous posts</h2>
-					<FetchedPosts posts={[]} />
+					<FetchedPosts />
 				</div>
 			</div>
 		</div>
