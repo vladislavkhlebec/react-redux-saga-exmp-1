@@ -8,14 +8,20 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { rootReducer } from './redux/rootReducer'
 import { forbiddenWordsMiddleware } from './redux/posts/middleware'
+import createSagaMiddleware from 'redux-saga'
+import { sagaWatcher } from './redux/sagas'
+
+const saga = createSagaMiddleware()
 
 const store = createStore(
 	rootReducer,
 	compose(
-		applyMiddleware(thunk, forbiddenWordsMiddleware),
+		applyMiddleware(thunk, forbiddenWordsMiddleware, saga),
 		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 	)
 )
+
+saga.run(sagaWatcher)
 
 render(
 	<Provider store={store}>
